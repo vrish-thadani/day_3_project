@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop Break at 5</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f7fa;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .number-display {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+        .number {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+        .number.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .number.break {
+            background-color: #f44336;
+            color: white;
+            transform: scale(1.1);
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .explanation {
+            margin-top: 1rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loop Break at 5</h1>
+        <div class="number-display" id="numberDisplay"></div>
+        <button onclick="runLoop()">Run Loop</button>
+        <p class="explanation">The loop will stop completely when it reaches 5</p>
+    </div>
+
+    <script>
+        function runLoop() {
+            const display = document.getElementById('numberDisplay');
+            display.innerHTML = '';
+            
+            // Loop from 0 to 9
+            for (let i = 0; i < 10; i++) {
+                // Create number element
+                const numberElement = document.createElement('div');
+                numberElement.className = 'number';
+                numberElement.textContent = i;
+                
+                // Add to display immediately
+                display.appendChild(numberElement);
+                
+                // Highlight the current number
+                setTimeout(() => {
+                    numberElement.classList.add('active');
+                    
+                    // Check if we've reached 5
+                    if (i === 5) {
+                        numberElement.classList.add('break');
+                        console.log("Loop broken at 5");
+                        return; // Exit the loop completely
+                    }
+                    
+                    // Remove highlight after delay
+                    setTimeout(() => {
+                        numberElement.classList.remove('active');
+                    }, 500);
+                    
+                }, i * 600); // Staggered delay for visualization
+            }
+        }
+    </script>
+</body>
+</html>

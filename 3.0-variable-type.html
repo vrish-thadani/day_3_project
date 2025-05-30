@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable Type Checker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .variable-card {
+            background-color: #f1f3f5;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .variable-value {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            color: #2b8a3e;
+        }
+        .variable-type {
+            background-color: #e9ecef;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #c92a2a;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+        button {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        #stringBtn {
+            background-color: #d0ebff;
+            color: #1864ab;
+        }
+        #numberBtn {
+            background-color: #fff3bf;
+            color: #e67700;
+        }
+        #booleanBtn {
+            background-color: #d3f9d8;
+            color: #2b8a3e;
+        }
+        .type-explanation {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Variable Type Checker</h1>
+        
+        <div class="variable-card">
+            <div>
+                <div>Current Value:</div>
+                <div class="variable-value" id="valueDisplay">undefined</div>
+            </div>
+            <div>
+                <div>Type:</div>
+                <div class="variable-type" id="typeDisplay">undefined</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="stringBtn" onclick="setString()">String</button>
+            <button id="numberBtn" onclick="setNumber()">Number</button>
+            <button id="booleanBtn" onclick="setBoolean()">Boolean</button>
+        </div>
+        
+        <div class="type-explanation">
+            <p>Click buttons to change the variable type and see how <code>typeof</code> identifies each one.</p>
+            <p>Also check the browser console (F12) for additional output.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentVariable;
+        
+        function updateDisplay() {
+            const valueDisplay = document.getElementById('valueDisplay');
+            const typeDisplay = document.getElementById('typeDisplay');
+            
+            // Handle undefined case
+            if (currentVariable === undefined) {
+                valueDisplay.textContent = 'undefined';
+                typeDisplay.textContent = 'undefined';
+                return;
+            }
+            
+            // Display the value and type
+            valueDisplay.textContent = typeof currentVariable === 'string' 
+                ? `"${currentVariable}"` 
+                : currentVariable;
+                
+            typeDisplay.textContent = typeof currentVariable;
+            
+            // Log to console
+            console.log(`Value: ${currentVariable}, Type: ${typeof currentVariable}`);
+        }
+        
+        function setString() {
+            currentVariable = "Hello World";
+            updateDisplay();
+        }
+        
+        function setNumber() {
+            currentVariable = 42;
+            updateDisplay();
+        }
+        
+        function setBoolean() {
+            currentVariable = true;
+            updateDisplay();
+        }
+        
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>

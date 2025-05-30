@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Greeting</title>
+    <style>
+        /* CSS Styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f0f8ff;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        #output {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to JavaScript!</h1>
+    <div id="output"></div>
+
+    <script>
+        // JavaScript Code
+        let language = "JavaScript";
+        let greeting = `I am learning ${language}!`;
+        
+        // Display in console
+        console.log(greeting);
+        
+        // Display on webpage
+        document.getElementById('output').textContent = greeting;
+    </script>
+</body>
+</html>

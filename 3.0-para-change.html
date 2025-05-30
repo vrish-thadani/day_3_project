@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Paragraph Text</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            font-size: 1.2rem;
+            color: #495057;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px dashed #dee2e6;
+            border-radius: 5px;
+            min-height: 20px;
+        }
+        button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            background-color: #3a5a80;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text Changer</h1>
+        <p id="textParagraph">Original Text</p>
+        <button onclick="changeText()">Change Text</button>
+    </div>
+
+    <script>
+        function changeText() {
+            // Get the paragraph element
+            const paragraph = document.getElementById('textParagraph');
+            
+            // Change the text content
+            paragraph.textContent = "Text Changed!";
+            
+            // Optional: Add styling to highlight the change
+            paragraph.style.color = "#4a6fa5";
+            paragraph.style.fontWeight = "bold";
+            paragraph.style.borderStyle = "solid";
+            
+            // Log to console
+            console.log("Text changed from 'Original Text' to 'Text Changed!'");
+        }
+    </script>
+</body>
+</html>

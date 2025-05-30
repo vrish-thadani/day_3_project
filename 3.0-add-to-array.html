@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits Array Example</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f7f4;
+        }
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .array-display {
+            font-size: 1.2rem;
+            background-color: #e8f4f8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            min-height: 60px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .fruit {
+            display: inline-block;
+            background-color: #ffecb3;
+            padding: 0.3rem 0.6rem;
+            margin: 0.2rem;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fruits Array</h1>
+        <div class="array-display" id="arrayDisplay"></div>
+        <button onclick="addFruit()">Add Orange</button>
+    </div>
+
+    <script>
+        // 1. Create array with two fruits
+        let fruits = ['Apple', 'Banana'];
+        
+        // Function to display the array
+        function displayFruits() {
+            const display = document.getElementById('arrayDisplay');
+            display.innerHTML = fruits.map(fruit => 
+                `<span class="fruit">${fruit}</span>`).join(' ');
+            
+            console.log("Current fruits array:", fruits);
+        }
+        
+        // Function to add a new fruit
+        function addFruit() {
+            // 2. Use push() to add another fruit
+            fruits.push('Orange');
+            
+            // Update the display
+            displayFruits();
+        }
+        
+        // Initial display
+        displayFruits();
+    </script>
+</body>
+</html>

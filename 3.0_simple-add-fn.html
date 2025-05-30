@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Add Function</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f7fa;
+        }
+        .calculator {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        input {
+            width: 80px;
+            padding: 0.5rem;
+            margin: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin: 1rem 0;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Addition</h1>
+        <div>
+            <input type="number" id="num1" placeholder="Number 1">
+            <span>+</span>
+            <input type="number" id="num2" placeholder="Number 2">
+        </div>
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <div class="result" id="result">Result will appear here</div>
+    </div>
+
+    <script>
+        // The add function
+        function add(a, b) {
+            return a + b;
+        }
+
+        // Function to handle the calculation and display
+        function calculateSum() {
+            // Get input values
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            
+            // Check if inputs are valid numbers
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('result').textContent = "Please enter valid numbers!";
+                return;
+            }
+            
+            // Use our add function
+            const sum = add(num1, num2);
+            
+            // Display the result
+            document.getElementById('result').textContent = `Result: ${sum}`;
+            
+            // Also log to console
+            console.log(`${num1} + ${num2} = ${sum}`);
+        }
+
+        // Example calls to the add function
+        console.log("3 + 5 =", add(3, 5)); // 8
+        console.log("10 + 20 =", add(10, 20)); // 30
+    </script>
+</body>
+</html>

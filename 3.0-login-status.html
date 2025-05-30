@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Status Check</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f7fa;
+        }
+        .login-status {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+        .welcome {
+            font-size: 1.5rem;
+            color: #27ae60;
+            padding: 1rem;
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            animation: fadeIn 0.5s ease-in;
+        }
+        .logout {
+            font-size: 1.5rem;
+            color: #e74c3c;
+            padding: 1rem;
+            background-color: #ffebee;
+            border-radius: 8px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-status">
+        <h1>Account Status</h1>
+        <div id="message"></div>
+        <button onclick="toggleLogin()">Toggle Login Status</button>
+    </div>
+
+    <script>
+        // Initialize login status
+        let isLoggedIn = true;
+        
+        // Function to check and display login status
+        function checkLoginStatus() {
+            const messageElement = document.getElementById('message');
+            
+            if (isLoggedIn) {
+                messageElement.textContent = "Welcome back!";
+                messageElement.className = "welcome";
+                console.log("User is logged in: Welcome back!");
+            } else {
+                messageElement.textContent = "Please log in.";
+                messageElement.className = "logout";
+                console.log("User is logged out: Please log in.");
+            }
+        }
+        
+        // Function to toggle login status
+        function toggleLogin() {
+            isLoggedIn = !isLoggedIn;
+            checkLoginStatus();
+        }
+        
+        // Check status when page loads
+        checkLoginStatus();
+    </script>
+</body>
+</html>

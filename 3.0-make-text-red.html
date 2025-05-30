@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Text Color</title>
+</head>
+<body>
+    <p id="myParagraph">This text will turn red when you click the button.</p>
+    <button id="colorButton">Click to Make Text Red</button>
+
+    <script>
+        document.getElementById('colorButton').addEventListener('click', function() {
+            document.getElementById('myParagraph').style.color = 'red';
+        });
+    </script>
+</body>
+</html>
