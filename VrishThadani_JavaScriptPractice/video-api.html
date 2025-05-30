@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video API Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    video {
+      width: 80%;
+      max-width: 600px;
+      margin-bottom: 1rem;
+    }
+    .controls button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+    #time-display {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎬 HTML5 Video Player with JS Controls</h2>
+
+  <!-- 1. Video element -->
+  <video id="myVideo" src="example.mp4" controls></video>
+  <!-- 
+    The <video> element is used to embed video content.
+    'controls' attribute shows default play/pause UI.
+    You can also control it using JavaScript.
+  -->
+
+  <!-- 2. Buttons for play, pause, mute, and jump -->
+  <div class="controls">
+    <button onclick="myVideo.play()">Play</button>
+    <button onclick="myVideo.pause()">Pause</button>
+    <button onclick="toggleMute()">Mute/Unmute</button>
+    <button onclick="jumpTo10()">Jump to 10s</button>
+  </div>
+
+  <!-- 3. Display current playback time -->
+  <div id="time-display">Current Time: 0s</div>
+
+  <script>
+    const myVideo = document.getElementById('myVideo');
+    const timeDisplay = document.getElementById('time-display');
+
+    // 4. Toggle mute/unmute
+    function toggleMute() {
+      myVideo.muted = !myVideo.muted;
+    }
+    // The 'muted' property is a boolean. true = muted, false = unmuted.
+
+    // 5. Update current playback time
+    myVideo.ontimeupdate = () => {
+      timeDisplay.textContent = `Current Time: ${Math.floor(myVideo.currentTime)}s`;
+    };
+    // ontimeupdate triggers as the video plays and currentTime updates
+
+    // 6. Jump to 10 seconds
+    function jumpTo10() {
+      myVideo.currentTime = 10;
+    }
+    // Set currentTime property to jump to any point in the video
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date & Clock in JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    #clock {
+      font-size: 2rem;
+      margin: 1rem 0;
+    }
+    #counter {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🕒 JavaScript Date & Clock</h2>
+
+  <!-- 1. Clock display -->
+  <div id="clock">--:--:--</div>
+  <button id="stopBtn">Stop Clock</button>
+
+  <!-- 2. Count-up timer display -->
+  <div id="counter">Count: 0</div>
+
+  <script>
+    // 1. Log current date/time
+    const now = new Date();
+    console.log(now);
+    // Date object in JS represents a single moment in time.
+
+    // 2. Real-time clock using setInterval
+    const clockEl = document.getElementById("clock");
+    let clockInterval = setInterval(() => {
+      const currentTime = new Date().toLocaleTimeString();
+      clockEl.textContent = currentTime;
+    }, 1000);
+    // setInterval() runs a function repeatedly after a delay (1000ms = 1s)
+
+    // 3. Stop clock button with clearInterval
+    const stopBtn = document.getElementById("stopBtn");
+    stopBtn.addEventListener("click", () => {
+      clearInterval(clockInterval);
+      console.log("Clock stopped");
+    });
+    // clearInterval() stops a running interval
+
+    // 4. Compare two dates
+    const date1 = new Date('2023-01-01');
+    const date2 = new Date('2024-01-01');
+
+    if (date1 < date2) {
+      console.log("Date1 is earlier");
+    } else {
+      console.log("Date2 is earlier or same");
+    }
+    // You can compare Date objects using <, >, etc.
+
+    // 5. Count-up timer until 10 seconds
+    const counterEl = document.getElementById("counter");
+    let count = 0;
+    const timer = setInterval(() => {
+      count++;
+      counterEl.textContent = `Count: ${count}`;
+      if (count === 10) {
+        clearInterval(timer);
+        console.log("Timer stopped at 10");
+      }
+    }, 1000);
+    // This shows how timers and conditions work together
+  </script>
+
+</body>
+</html>

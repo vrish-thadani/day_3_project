@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM Traversal</title>
+  <!--
+  What is HTML nesting and DOM tree?
+
+  HTML nesting means placing elements inside other elements properly (e.g., a <div> inside another <div>).
+  The DOM tree is a hierarchical structure representing HTML elements as nodes.
+  -->
+  <style>
+    .highlight {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+<body>
+  <div class="grandparent">
+    <div class="parent">
+      <div class="child">Child</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="toggle-btn">Toggle Highlight</button>
+  </div>
+
+  <script>
+    // 1. parentElement
+    const child = document.querySelector('.child');
+    console.log(child.parentElement); // Logs the parent div
+    // parentElement returns the closest parent (one level up) of the selected element in the DOM.
+
+    // 2. children
+    const parent = document.querySelector('.parent');
+    console.log(parent.children); // Logs only child elements
+    // .children returns HTMLCollection of elements. .childNodes includes text and comments too.
+
+    // 3. closest
+    const closestGrandparent = child.closest('.grandparent');
+    console.log(closestGrandparent); // Logs the grandparent
+    // .closest() finds the nearest ancestor with the given selector, searching upwards.
+
+    // 4. toggle class on parent
+    const btn = document.querySelector('.toggle-btn');
+    btn.addEventListener('click', function () {
+      btn.parentElement.classList.toggle('highlight');
+    });
+    // Event listener toggles 'highlight' class on the button's parent when clicked
+  </script>
+</body>
+</html>
